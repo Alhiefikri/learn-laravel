@@ -4,16 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Contact Page</title>
+  <title>Halaman Contact</title>
 </head>
 <body>
-  <h1>Contact Page</h1>
   <a href="/">Home</a>
   <a href="/about">About</a>
+  <a href="/blog">Blog</a>
   <a href="/contact">Contact</a>
+  <h1>Halaman Contact</h1>
 
-  <h2>Follow Us</h2>
-  <p>{{ $email }}</p>
-  <p>{{ $socialmedia }}</p>
+
+  <ul>
+    <li>
+      <a href="https://www.instagram.com/alhiefikri" target="_blank">Instagram</a>
+    </li>
+    <li>
+      <a href="https://www.github.com/alhiefikri" target="_blank">Github</a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/alhiefikri" target="_blank">Facebook</a>
+    </li>
+  </ul>
+  
 </body>
 </html>
