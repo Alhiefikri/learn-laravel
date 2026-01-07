@@ -1,7 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Route;
+
+
 
 Route::get('/', function () {
     return view('home', ['title' => 'Home Page']);
@@ -12,59 +15,13 @@ Route::get('/about', function () {
 
 
 Route::get('/posts', function () {
-    return view('posts', ['title' => 'Blog Page', 'posts' => [
-        [
-            'id' => 1,
-            'slug' => 'judul-artikel-1',
-            'title' => 'Judul Artikel 1',
-            'author' => 'Alhie Fikri',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus error deleniti minus architecto nihil cumque optio, laboriosam, officiis tenetur necessitatibus nemo porro deserunt non. Quidem nihil aliquam tempore reiciendis perferendis.',
-        ],
-        [
-            'id' => 2,
-            'slug' => 'judul-artikel-2',
-            'title' => 'Judul Artikel 2',
-            'author' => 'Alhie Fikri',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus error deleniti minus architecto nihil cumque optio, laboriosam, officiis tenetur necessitatibus nemo porro deserunt non. Quidem nihil aliquam tempore reiciendis perferendis.',
-        ],
-        [
-            'id' => 3,
-            'slug' => 'judul-artikel-3',
-            'title' => 'Judul Artikel 3',
-            'author' => 'Alhie Fikri',
-            'body' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit ullam libero beatae magni ea quo dicta, iusto, sapiente temporibus, reiciendis fugiat omnis eligendi. Omnis reiciendis magni non dolorem ut nostrum!',
-        ],
-    ]]);
+    return view('posts', ['title' => 'Blog Page', 'posts' => Post::all()]);
 });
 
 Route::get('/posts/{slug}', function ($slug) {
-    $posts = [
-        [
-            'id' => 1,
-            'slug' => 'judul-artikel-1',
-            'title' => 'Judul Artikel 1',
-            'author' => 'Alhie Fikri',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus error deleniti minus architecto nihil cumque optio, laboriosam, officiis tenetur necessitatibus nemo porro deserunt non. Quidem nihil aliquam tempore reiciendis perferendis.',
-        ],
-        [
-            'id' => 2,
-            'slug' => 'judul-artikel-2',
-            'title' => 'Judul Artikel 2',
-            'author' => 'Alhie Fikri',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus error deleniti minus architecto nihil cumque optio, laboriosam, officiis tenetur necessitatibus nemo porro deserunt non. Quidem nihil aliquam tempore reiciendis perferendis.',
-        ],
-        [
-            'id' => 3,
-            'slug' => 'judul-artikel-3',
-            'title' => 'Judul Artikel 3',
-            'author' => 'Alhie Fikri',
-            'body' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit ullam libero beatae magni ea quo dicta, iusto, sapiente temporibus, reiciendis fugiat omnis eligendi. Omnis reiciendis magni non dolorem ut nostrum!',
-        ],
-    ];
 
-    $post = Arr::first($posts, function ($post) use ($slug) {
-        return $post['slug'] == $slug;
-    });
+
+    $post = Post::find($slug);
 
     return view('post', ['title' => 'Single Post', 'post' => $post]);
 });
