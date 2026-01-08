@@ -20,7 +20,7 @@ return new class extends Migration
             );
             $table->foreignId('category_id')->constrained(
                 table: 'categories',
-                indexName: 'categories_category_id'
+                indexName: 'posts_category_id'
             );
             $table->string('slug')->unique();
             $table->text('body');

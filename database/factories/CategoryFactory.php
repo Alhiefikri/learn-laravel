@@ -19,8 +19,8 @@ class CategoryFactory extends Factory
     {
         return [
             //
-            'name' => fake()->unique()->sentence(1), // Satu kata saja biar unik
-            'slug' => fake()->unique()->slug(),      // Tambahkan unique() di sini juga
+            'name' => fake()->unique()->sentence(rand(1, 2), false), // Satu kata saja biar unik
+            'slug' => Str::slug(fake()->sentence(rand(1, 2), false))
         ];
     }
 }
